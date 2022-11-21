@@ -27,4 +27,4 @@ for i in hse_prediction:
     pred = i[0]
     if pred[:7] != "В новом":
         correct_predictions.append(pred)
-print(random.choice(correct_predictions))
+print(*random.choice(correct_predictions))
