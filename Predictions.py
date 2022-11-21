@@ -1,4 +1,5 @@
 import random
+import re
 
 hse_prediction = [
     ['Слушайте каждого. Идеи приходят отовсюду.'],
@@ -20,11 +21,21 @@ hse_prediction = [
     ['В новом году обещаю себе защитить диссертацию'],
     ['В новом году обещаю себе запомнить имена одногруппников'],
     ['Через час  Вы снова проголодаетесь. Шоколад можно найти в магазине.']
-        ]
-correct_predictions = []
+]
 
+indexes = []
 for i in hse_prediction:
-    pred = i[0]
-    if pred[:7] != "В новом":
-        correct_predictions.append(pred)
-print(*random.choice(correct_predictions))
+    try:
+        if re.match(r'В новом году', i[0]).group() == 'В новом году':
+            ind = hse_prediction.index(i)
+            indexes.append(ind)
+    except:
+        pass
+
+indexes.reverse()
+for i in indexes:
+    del hse_prediction[i]
+print(indexes)
+
+print(hse_prediction)
+print(*random.choice(hse_prediction))
