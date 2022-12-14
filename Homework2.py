@@ -16,7 +16,7 @@ def Get_news(url0):
     for i in text_list:
       text.append(i.text)
     text_final = ' '.join(text)
-    return url, date, title, author, text_final
+    return url0, date, title, author, text_final
 
 
 url = 'https://www.vedomosti.ru/ecology'
